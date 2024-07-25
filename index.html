@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .banner{
+            display: flex;
+            justify-content: center;
+        }
+        .banner-m{
+            display: flex;
+            justify-content: center;
+        }
+        .banner-in{
+            margin: 0;
+            padding: 0;
+            background-color: #ff9b00;
+            width: 98%;
+            height: 6vh;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30%;
+        }
+        p{
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        span{
+            color: #905f12;
+        }
+        .timer{
+            color: black;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 600px) {
+            .banner-in{
+                display: none;
+            }
+        }
+        .banner-mob{
+            height: 20vh;
+            width: 96%;
+            background-color: #ffecca;
+            border-radius: 10px;
+        }
+        .con1{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2%;
+        }
+        .con2{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .con3{
+            height: 4vh;
+            width: 100%;
+            background-color: #ffd57c;
+            margin-top: 4%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 17%;
+            
+        }
+        hr{
+            margin-top: -5%;
+        }
+        @media only screen and (min-width: 992px) {
+            .banner-m{
+                display: none;
+            }
+        }
+     </style>
+</head>
+<body>
+
+    <div class="banner" id="banner">
+        <div class="banner-in">
+            <p>Limited time offer</p>
+            <p>ends in <span class="timer">00 : 00 : 00</span></p>
+            <p>get 10% <span>use code: </span> examstart</p>
+        </div>
+    </div>
+
+    <div class="banner-m">
+        <div class="banner-mob">
+            <div class="con1">
+                <img src="icons8-clock-50.png" alt="" height="35px" width="auto">
+                <div>
+                    <p>Limited Time Offer</p>
+                    <hr width="80%">
+                </div>
+            </div>
+            <div class="con2">
+                <p>ends in <span class="timer">00 : 00 : 00</span></p>
+            </div>
+            <div class="con3">
+                <p>get 10%</p>
+                <p><span>use code: </span> examstart</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function startCountdown(duration) {
+            let timer = duration, hours, minutes, seconds;
+            const displays = document.querySelectorAll('.timer');
+
+            setInterval(() => {
+                hours = parseInt(timer / 3600, 10);
+                minutes = parseInt((timer % 3600) / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                hours = hours < 10 ? '0' + hours : hours;
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+
+                displays.forEach(display => {
+                    display.textContent = hours + ':' + minutes + ':' + seconds;
+                });
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+
+        const countdownTime = 100;
+        window.onload = () => {
+            startCountdown(countdownTime);
+        };
+    </script>
+</body>
+</html>
